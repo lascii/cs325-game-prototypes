@@ -24,6 +24,9 @@ body
 <ul>
 <li><strong>Originality:</strong>
 What is original about your game?
+<ul>
+<li>Picking up a blue and red flask causes a reaction and causes a bomb to spawn.</li>
+</ul>
 </li>
 
 <li><strong>Technical Merit:</strong>
@@ -33,24 +36,30 @@ What is interesting about your game technology?
 <li><strong>Prototype Postmortem:</strong>
 What did you learn from this prototype?
 What was the easiest or hardest part of making it?
+<ul>
+<li>I learned how to create a basic Phaser game. The hardest part was figuring how do implement changes as I have never used Phaser before.</li>
+</ul>
 </li>
 
 <li><strong>Prototype Assets:</strong>
 Did you make your prototype assets from scratch? Did you borrow them? Cite your sources here.
 <ul>
-<li>Sprite: <a href="tp://phaser.io/tutorials/making-your-first-phaser-3-game/part1">Phaser sprite</a></li>
+<li>Phaser sprite and bomb borrowed from the Phaser tutorial: <a href="tp://phaser.io/tutorials/making-your-first-phaser-3-game/part1">link</a></li>
 </ul>
 </li>
 
 <li><strong>Prototype Closest Other Game:</strong>
 Which other game most closely resembles your game? If you are borrowing code from a Phaser Example, you must say so here. If you borrow code from elsewhere, you must say so here.
 <ul>
-<li>Making your first Phaser 3 game: <a href="http://phaser.io/tutorials/making-your-first-phaser-3-game/part1">link</a></li>
+<li>Borrowed code from the Phaser tutorial: <a href="http://phaser.io/tutorials/making-your-first-phaser-3-game/part1">link</a></li>
 </ul>
 </li>
 
 <li><strong>High Concept:</strong>
 A one-sentence summary of your game.
+<ul>
+<li>Player's goal is to pick up as many blue flasks as possible without getting hit by a bomb.</li>
+</ul>
 </li>
 
 <li><strong>Theme:</strong>
@@ -63,40 +72,62 @@ State which of the Storymatic themes you used.
 <li><strong>Mandated Variety:</strong>
 State which input, randomness, genre, and play style you used in this prototype.
 <ul>
-<li>input: keyboard; randomness: deterministic; play style: collector; genre: platformer</li>
+<li>input: keyboard, arrowkeys</li>
+<li>randomness: random, due to the flasks and bombs spawning randomly</li>
+<li>play style: collector</li>
+<li>genre: platformer</li>
 </ul>
 </li>
 
 <li><strong>Prototype Goal:</strong>
 What game mechanic is this prototype evaluating?
+<ul>
+<li>Moving around in a 2D environment and avoiding obstacles.</li>
+</ul>
 </li>
 
 <li><strong>Player Experience Goals:</strong>
 What experience do you want players to have when playing your game?
+<ul>
+<li>A sense of challenge as more bombs are added.</li>
+</ul>
 </li>
 
 <li><strong>Gameplay:</strong>
 A paragraph describing the actions the player can perform, the system dynamics, and the core mechanic. Include a concise explanation of the prototype’s inputs and their expected effects (how to play). You can also describe game play that is not in the prototype. You may include mock-up images for parts of the game not in the prototype.
+<ul>
+<li>Player uses arrow keys to move, and can pick up items. The blue flasks add 10 pts and the red ones subtract 10. Getting hit by a bomb ends the game.</li>
+</ul>
 </li>
 
 <li><strong>Strategies:</strong>
 What player strategies do you expect will be effective at playing this game?
+<ul>
+<li>Avoid picking up the red flasks, and watching out for the bombs that bounce between the platforms.</li>
+</ul>
 </li>
 
 <li><strong>Story/Setting/Premise:</strong>
 A paragraph about the world your game is set in and who the characters are. What makes the game world and its occupants unique and interesting? Do the tokens represent something? If the game has a backstory, mention it here. If the game is abstract, then say so.
 How will the dramatic tension interact with the gameplay tension?
+<ul>
+<li>The game is set in a lab, and the player is a chemist collecting chemicals. The blue and red chemicals cause a reaction.</li>
+</ul>
 </li>
 
 <li><strong>Target Audience:</strong>
 A single sentence that describes the demographic you're trying to reach.
+<ul>
+<li>People who enjoy platformers.</li>
+</ul>
 </li>
 
 <li><strong>Play Time:</strong>
 How long does your game take to play?
-</li>
-
+<ul>
+<li>A couple of minutes.</li>
 </ul>
+</li>
 </div>
 
 <!-- main.js must come at the end since it expects the HTML to have been created. -->
