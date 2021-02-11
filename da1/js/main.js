@@ -11,54 +11,195 @@ import "./phaser.js";
 
 // The simplest class example: https://phaser.io/examples/v3/view/scenes/scene-from-es6-class
 
-class MyScene extends Phaser.Scene {
-    
-    constructor() {
-        super();
-        
-        this.bouncy = null;
-    }
-    
-    preload() {
-        // Load an image and call it 'logo'.
-        this.load.image( 'logo', 'assets/cole.jpg' );
-    }
-    
-    create() {
-        // Create a sprite at the center of the screen using the 'logo' image.
-        this.bouncy = this.physics.add.sprite( this.cameras.main.centerX, this.cameras.main.centerX, 'logo' );
-        
-        // Make it bounce off of the world bounds.
-        this.bouncy.body.collideWorldBounds = true;
-        
-        // Make the camera shake when clicking/tapping on it.
-        this.bouncy.setInteractive();
-        this.bouncy.on( 'pointerdown', function( pointer ) {
-            this.scene.cameras.main.shake(500);
-            });
-        
-        // Add some text using a CSS style.
-        // Center it in X, and position its top 15 pixels from the top of the world.
-        let style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-        let text = this.add.text( this.cameras.main.centerX, 15, "Hello, Phaser.", style );
-        text.setOrigin( 0.5, 0.0 );
-    }
-    
-    update() {
-        // Accelerate the 'logo' sprite towards the cursor,
-        // accelerating at 500 pixels/second and moving no faster than 500 pixels/second
-        // in X or Y.
-        // This function returns the rotation angle that makes it visually match its
-        // new trajectory.
-        this.bouncy.rotation = this.physics.accelerateToObject( this.bouncy, this.input.activePointer, 500, 500, 500 );
-    }
-}
 
-const game = new Phaser.Game({
-    type: Phaser.AUTO,
-    parent: 'game',
-    width: 800,
-    height: 600,
-    scene: MyScene,
-    physics: { default: 'arcade' },
-    });
+    var config = {
+        type: Phaser.AUTO,
+		parent: 'game',
+        width: 1000,
+        height: 600,
+		physics: {
+			default: 'arcade',
+			arcade: {
+				gravity: { y: 300 },
+			debug: false
+			}
+		},
+        scene: {
+            preload: preload,
+            create: create,
+            update: update
+        }
+    };
+
+	var platforms;
+	var player;
+	var cursors;
+	var stars;
+	
+	var blueflasks;
+	var redflasks;
+	
+	var bombs;
+	var score = 0;
+	var scoreText;
+	var gameOver = false;
+	
+    var game = new Phaser.Game(config);
+
+    function preload ()
+    {
+		this.load.image('sky', 'assets/lab.png');
+		this.load.image('ground', 'assets/platform.png');
+		this.load.image('star', 'assets/blueflask.png');
+		this.load.image('bomb', 'assets/bomb.png');
+		this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 } );
+		this.load.image('blueflask', 'assets/blueflask.png');
+		this.load.image('redflask', 'assets/redflask.png');
+    }
+	
+    function create ()
+    {
+		this.add.image(0, 0, 'sky').setOrigin(0);
+		
+		platforms = this.physics.add.staticGroup(); // Creates a Static physics body(can't move)
+		
+		platforms.create(400, 568, 'ground').setScale(3).refreshBody(); // Scales the platform image
+		
+		platforms.create(600, 400, 'ground');
+		platforms.create(50, 250, 'ground');
+		platforms.create(750, 220, 'ground');
+		
+		player = this.physics.add.sprite(100, 450, 'dude');
+
+        player.setBounce(0.1);
+        player.setCollideWorldBounds(true);
+
+        this.anims.create({
+            key: 'left',
+            frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'turn',
+            frames: [ { key: 'dude', frame: 4 } ],
+            frameRate: 20
+        });
+
+        this.anims.create({
+            key: 'right',
+            frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
+		cursors = this.input.keyboard.createCursorKeys();
+		
+		stars = this.physics.add.group({
+			key: 'star',
+			repeat: 5,
+			setXY: { x: 120, y: 0, stepX: 170 }
+		});
+
+		stars.children.iterate(function (child) {
+			child.setBounceY(Phaser.Math.FloatBetween(0.1, 0.2));
+		});
+		
+		redflasks = this.physics.add.group({
+			key: 'redflask',
+			repeat: 5,
+			setXY: { x: 10, y: 0, stepX: 170 }
+		});
+
+		redflasks.children.iterate(function (child) {
+			child.setBounceY(Phaser.Math.FloatBetween(0.1, 0.2));
+		});
+		
+		bombs = this.physics.add.group();
+		
+		scoreText = this.add.text(16, 16, 'score: 0', {fontSize: '32px', fill: '#000'} );
+		
+        this.physics.add.collider(player, platforms);
+		this.physics.add.collider(stars, platforms);
+		this.physics.add.collider(bombs, platforms);
+		this.physics.add.collider(redflasks, platforms);
+		
+		this.physics.add.collider(player, bombs, hitBomb, null, this);
+		
+		this.physics.add.overlap(player, stars, collectStar, null, this);
+		this.physics.add.overlap(player, redflasks, collectRed, null, this);
+    }
+
+    function update ()
+    {
+		if (cursors.left.isDown)
+		{
+			player.setVelocityX(-160);
+			player.anims.play('left', true);
+		}
+		else if (cursors.right.isDown)
+		{
+			player.setVelocityX(160);
+			player.anims.play('right', true);
+		}
+		else
+		{
+			player.setVelocityX(0);
+
+			player.anims.play('turn');
+		}
+
+		if (cursors.up.isDown && player.body.touching.down)
+		{
+			player.setVelocityY(-330); //jump height
+		}
+		
+	}
+	
+	function collectStar(player, star)
+	{
+		star.disableBody(true, true);
+		
+		score += 10;
+		scoreText.setText('Score: ' + score);
+		
+		if (stars.countActive(true)===0)
+		{
+			stars.children.iterate(function(child) {
+				child.enableBody(true, child.x, 0, true, true);
+			});
+			
+			var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+			
+			var bomb = bombs.create(x, 16, 'bomb');
+			bomb.setBounce(1);
+			bomb.setCollideWorldBounds(true);
+			bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
+		}
+	}
+	
+	function collectRed(player, redflask)
+	{
+		this.physics.pause();
+		
+		player.setTint(0xff0000);
+		player.anims.play('turn');
+		
+		gameOver = true;
+		//redflask.disableBody(true, true);
+		
+		//score += 10;
+		//.setText('Score: ' + score);
+		
+	}	
+	
+	function hitBomb(player, bomb)
+	{
+		this.physics.pause();
+		
+		player.setTint(0xff0000);
+		player.anims.play('turn');
+		
+		gameOver = true;
+	}
