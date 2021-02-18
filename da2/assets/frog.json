@@ -1,0 +1,293 @@
+{
+	"textures": [
+		{
+			"image": "frog.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 136,
+				"h": 58
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "spr_frog_g_jump_2up.gif",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 40,
+						"h": 31
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 40,
+						"h": 31
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 40,
+						"h": 31
+					}
+				},
+				{
+					"filename": "Frog_r_attack_anim.gif",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 41,
+						"w": 32,
+						"h": 23
+					},
+					"frame": {
+						"x": 1,
+						"y": 34,
+						"w": 32,
+						"h": 23
+					}
+				},
+				{
+					"filename": "frog_r_idle.gif",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 41,
+						"w": 32,
+						"h": 23
+					},
+					"frame": {
+						"x": 1,
+						"y": 34,
+						"w": 32,
+						"h": 23
+					}
+				},
+				{
+					"filename": "spr_frog_r_attack_anim.gif",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 41,
+						"w": 32,
+						"h": 23
+					},
+					"frame": {
+						"x": 1,
+						"y": 34,
+						"w": 32,
+						"h": 23
+					}
+				},
+				{
+					"filename": "spr_frog_r_idle_anim.gif",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 41,
+						"w": 32,
+						"h": 23
+					},
+					"frame": {
+						"x": 1,
+						"y": 34,
+						"w": 32,
+						"h": 23
+					}
+				},
+				{
+					"filename": "spr_frog_g_jump_4land_anim.gif",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 72,
+						"h": 39
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 1,
+						"w": 46,
+						"h": 21
+					},
+					"frame": {
+						"x": 43,
+						"y": 1,
+						"w": 46,
+						"h": 21
+					}
+				},
+				{
+					"filename": "frog_jump_complete_anim.gif",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 287,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 105,
+						"w": 32,
+						"h": 23
+					},
+					"frame": {
+						"x": 35,
+						"y": 34,
+						"w": 32,
+						"h": 23
+					}
+				},
+				{
+					"filename": "spr_frog_g_attack_anim.gif",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 41,
+						"w": 32,
+						"h": 23
+					},
+					"frame": {
+						"x": 35,
+						"y": 34,
+						"w": 32,
+						"h": 23
+					}
+				},
+				{
+					"filename": "spr_frog_g_idle_anim.gif",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 41,
+						"w": 32,
+						"h": 23
+					},
+					"frame": {
+						"x": 35,
+						"y": 34,
+						"w": 32,
+						"h": 23
+					}
+				},
+				{
+					"filename": "spr_frog_g_jump_3down.gif",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 42,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 42,
+						"h": 24
+					},
+					"frame": {
+						"x": 91,
+						"y": 1,
+						"w": 42,
+						"h": 24
+					}
+				},
+				{
+					"filename": "spr_frog_b_attack_anim.gif",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 41,
+						"w": 32,
+						"h": 23
+					},
+					"frame": {
+						"x": 69,
+						"y": 27,
+						"w": 32,
+						"h": 23
+					}
+				},
+				{
+					"filename": "spr_frog_b_idle_anim.gif",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 41,
+						"w": 32,
+						"h": 23
+					},
+					"frame": {
+						"x": 69,
+						"y": 27,
+						"w": 32,
+						"h": 23
+					}
+				},
+				{
+					"filename": "spr_frog_g_jump_1launch_anim.gif",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 68,
+						"h": 65
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 42,
+						"w": 32,
+						"h": 23
+					},
+					"frame": {
+						"x": 103,
+						"y": 27,
+						"w": 32,
+						"h": 23
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:2587ab305441c3069eea02e58c298f17:98707bbba80208afb5ee17a246969ceb:8dde0dd0197344c2f9f9f01d8d204375$"
+	}
+}

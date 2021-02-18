@@ -58,45 +58,45 @@ class MyScene extends Phaser.Scene {
 		player.setCollideWorldBounds(true);
 		
 		this.anims.create({
-        key: 'left',
-        frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
-        frameRate: 10,
-        repeat: -1
+			key: 'left',
+			frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
+			frameRate: 10,
+			repeat: -1
 		});
 
 		this.anims.create({
-        key: 'turn',
-        frames: [ { key: 'dude', frame: 4 } ],
-        frameRate: 20
+			key: 'turn',
+			frames: [ { key: 'dude', frame: 4 } ],
+			frameRate: 20
 		});
 
 		this.anims.create({
-        key: 'right',
-        frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
-        frameRate: 10,
-        repeat: -1
+			key: 'right',
+			frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
+			frameRate: 10,
+			repeat: -1
 		});
 
 		cursors = this.input.keyboard.createCursorKeys();
 		
 		stars = this.physics.add.group({
-		key: 'star',
-		repeat: 5,
-		setXY: { x: getRandomNum(10, 100) , y: 0, stepX: 170 }
+			key: 'star',
+			repeat: 5,
+			setXY: { x: getRandomNum(10, 100) , y: 0, stepX: 170 }
 		});
 
 		stars.children.iterate(function (child) {
-		child.setBounceY(Phaser.Math.FloatBetween(0.1, 0.2));
+			child.setBounceY(Phaser.Math.FloatBetween(0.1, 0.2));
 		});
 		
 		redflasks = this.physics.add.group({
-		key: 'redflask',
-		repeat: 4,
-		setXY: { x: getRandomNum(20, 200), y: 0, stepX: getRandomNum(150, 200) }
+			key: 'redflask',
+			repeat: 4,
+			setXY: { x: getRandomNum(20, 200), y: 0, stepX: getRandomNum(150, 200) }
 		});
 
 		redflasks.children.iterate(function (child) {
-		child.setBounceY(Phaser.Math.FloatBetween(0.1, 0.2));
+			child.setBounceY(Phaser.Math.FloatBetween(0.1, 0.2));
 		});
 		
 		bombs = this.physics.add.group();
@@ -112,12 +112,14 @@ class MyScene extends Phaser.Scene {
 		this.physics.add.overlap(player, redflasks, collectRed, null, this);
 		this.physics.add.overlap(player, bombs, hitBomb, null, this);
 		
+		/* Generates a random number between min and max. */
 		function getRandomNum(min, max) {
 			min = Math.ceil(min);
 			max = Math.floor(max);
 			return Math.floor(Math.random() * (max-min) + min);
 		}
 		
+		/* Called when player collects a blue flask. */
 		function collectStar(player, star) {
 			star.disableBody(true, true);
 		
@@ -135,7 +137,8 @@ class MyScene extends Phaser.Scene {
 				createBomb();
 			}
 		}
-
+		
+		/* Creates a bomb, called when the player collects all blue flasks or collects a red one. */
 		function createBomb() {
 			var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
 		
@@ -145,6 +148,7 @@ class MyScene extends Phaser.Scene {
 			bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
 		}
 
+		/* Called when the player picks up a red flask. */
 		function collectRed(player, redflask) {
 			redflask.disableBody(true, true);
 			score -= 10;
@@ -152,6 +156,7 @@ class MyScene extends Phaser.Scene {
 			createBomb();
 		}	
 
+		/* Called when the player hits a bomb, game over. */
 		function hitBomb(player, bomb) {
 			this.physics.pause();
 			player.setTint(0xff0000);
