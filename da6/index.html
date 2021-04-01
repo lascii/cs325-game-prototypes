@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>GIS Digital Assignment 1</title>
+<style>
+body
+{
+    color: #777;
+    font-family: "Avenir", Verdana, sans-serif;
+}
+#readme
+{
+    margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+<div id="game"></div>
+<div id="readme">
+<h2>Game title</h2>
+
+<ul>
+<li><strong>Originality:</strong>
+What is original about your game?
+<ul>
+<li>Picking up the red or blue pixels can cause the temperature to change, affecting the player and the environment.</li>
+</ul>
+</li>
+
+<li><strong>Technical Merit:</strong>
+What is interesting about your game technology?
+<ul>
+<li>The temperature can change, which affects the player and can make it more difficult to avoid obstacles.</li>
+</ul>
+</li>
+
+<li><strong>Prototype Postmortem:</strong>
+What did you learn from this prototype?
+What was the easiest or hardest part of making it?
+<ul>
+<li>Since I had already made a basic platformer and am more experienced with Phaser, I already knew how to implement 
+certain aspects of my game (movement, picking up things, calling functions), which made creating this prototype a bit easier.
+However, I did have issues learning how to work with events and listeners between Scenes, which took up most of my time when creating this prototype.</li>
+</ul>
+</li>
+
+<li><strong>Prototype Assets:</strong>
+Did you make your prototype assets from scratch? Did you borrow them? Cite your sources here.
+<ul>
+<li>Sprite: <a href="tp://phaser.io/tutorials/making-your-first-phaser-3-game/part1">link</a></li>
+</ul>
+</li>
+
+<li><strong>Prototype Closest Other Game:</strong>
+Which other game most closely resembles your game? If you are borrowing code from a Phaser Example, you must say so here. If you borrow code from elsewhere, you must say so here.
+<ul>
+<li>I used my first Digital Assignment as a base, which followed the <a href="http://phaser.io/tutorials/making-your-first-phaser-3-game/part1">Phaser first game tutorial</a></li>
+</ul>
+</li>
+
+<li><strong>High Concept:</strong>
+A one-sentence summary of your game.
+<ul>
+<li>Player's goal is to reach the end(flag) without dying(hitting the spikes).</li>
+</ul>
+</li>
+
+<li><strong>Theme:</strong>
+State which of the Storymatic themes you used.
+<ul>
+<li>n/a</li>
+</ul>
+</li>
+
+<li><strong>Mandated Variety:</strong>
+State which input, randomness, genre, and play style you used in this prototype.
+<ul>
+<li>n/a
+</ul>
+</li>
+
+<li><strong>Prototype Goal:</strong>
+What game mechanic is this prototype evaluating?
+<ul>
+<li>The temperature changes and how it affects the players and environment.</li>
+</ul>
+</li>
+
+<li><strong>Player Experience Goals:</strong>
+What experience do you want players to have when playing your game?
+<ul>
+<li>It's currently not really that hard, but I'd like for it to be challenging once I work out more obstacles.</li>
+</ul>
+</li>
+
+<li><strong>Gameplay:</strong>
+A paragraph describing the actions the player can perform, the system dynamics, and the core mechanic. Include a concise explanation of the prototype’s inputs and their expected effects (how to play). You can also describe game play that is not in the prototype. You may include mock-up images for parts of the game not in the prototype.
+<ul>
+<li>WASD to move. Space to jump. Picking up the blue/red pixels changes the temperature. The cold temperature will cause the player to be slower, and make it impossible to jump over the spikes.</li>
+</ul>
+</li>
+
+<li><strong>Strategies:</strong>
+What player strategies do you expect will be effective at playing this game?
+<ul>
+<li>Avoiding or picking up the temperature pixels when necessary. It may be harder to move when cold.</li>
+</ul>
+</li>
+
+<li><strong>Story/Setting/Premise:</strong>
+A paragraph about the world your game is set in and who the characters are. What makes the game world and its occupants unique and interesting? Do the tokens represent something? If the game has a backstory, mention it here. If the game is abstract, then say so.
+How will the dramatic tension interact with the gameplay tension?
+<ul>
+<li>There isn't really a story. Player just wants to reach the end.</li>
+</ul>
+</li>
+
+<li><strong>Target Audience:</strong>
+A single sentence that describes the demographic you're trying to reach.
+<ul>
+<li>People who like platformers.</li>
+</ul>
+</li>
+
+<li><strong>Play Time:</strong>
+How long does your game take to play?
+<ul>
+<li>A couple of minutes.</li>
+</ul>
+</li>
+</div>
+
+<!-- main.js must come at the end since it expects the HTML to have been created. -->
+<script src="js/main.js" type="module"></script>
+</body>
+</html>
